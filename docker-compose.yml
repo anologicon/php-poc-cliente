@@ -1,0 +1,24 @@
+version: "3.7"
+
+services: 
+    php:
+        build: .
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - .:/var/www/html
+        links:
+            - db
+    composer:
+        image: composer:latest
+        volumes:
+             - .:/var/www/html
+        command: composer install -d /var/www/html
+    db:
+        image: mysql:5.7
+        volumes:
+            - /var/lib/mysql
+        environment:
+        - MYSQL_ROOT_PASSWORD=phprs
+        - MYSQL_DATABASE=phprs

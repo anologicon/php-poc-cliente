@@ -1,0 +1,15 @@
+{
+    "name": "poc/cliente-cadastro",
+    "description": "main project",
+    "license": "proprietary",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "pecee/simple-router": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "PoC\\": "src/"
+        }
+    }
+}
