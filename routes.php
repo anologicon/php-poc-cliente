@@ -2,6 +2,10 @@
 
 use Pecee\SimpleRouter\SimpleRouter;
 
+use PoC\Controller;
+
 SimpleRouter::get('/', function () {
-    echo "Eccco";
+    $app = new Controller\User();
+
+    $app->list();
 });
