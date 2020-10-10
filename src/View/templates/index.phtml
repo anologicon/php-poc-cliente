@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<?= $this->section('head', $this->fetch('templates/header', ['title' => $title])) ?>
+
+<body class="d-flex flex-column">
+    <main role="main" class="container">
+        <?= $this->section('content') ?>
+    </main>
+
+    <?= $this->section('footer', $this->fetch('templates/footer')) ?>
+</body>
+
+</html>

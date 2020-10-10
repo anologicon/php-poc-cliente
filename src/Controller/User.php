@@ -9,9 +9,9 @@ class User
     public function list()
     {
         // Create new Plates instance
-        $templates = new Engine('src/View/Templates', 'phtml');
+        $templates = new Engine('src/View', 'phtml');
 
         // Render a template
-        echo $templates->render('profile', ['name' => 'Jonathan']);
+        echo $templates->render('user/index');
     }
 }
