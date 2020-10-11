@@ -3,7 +3,7 @@
 namespace PoC\Domain\Service;
 
 use PoC\Infrastructure\Repository\User as UserRepository;
-use PoC\Model\UserList;
+use PoC\Model\User as UserModel;
 
 class User
 {   
@@ -11,6 +11,11 @@ class User
 
     public function __construct() {
         $this->repository = new UserRepository();
+    }
+
+    public function find(int $id)
+    {
+        return $this->repository->find($id);
     }
 
     public function fetchAllUsers(): array
@@ -21,15 +26,15 @@ class User
         
         foreach ($allUsersRaw as $userRaw) {
 
-            $newModelUserList = new UserList();
+            $newModelUser = new UserModel();
 
-            $newModelUserList->setName($userRaw['nome']);
-            $newModelUserList->setEmail($userRaw['email']);
-            $newModelUserList->setPhone($userRaw['telefone']);
-            $newModelUserList->setCpf((int) $userRaw['cpf']);
-            $newModelUserList->setId((int) $userRaw['id']);
+            $newModelUser->setName($userRaw['nome']);
+            $newModelUser->setEmail($userRaw['email']);
+            $newModelUser->setPhone($userRaw['telefone']);
+            $newModelUser->setCpf((int) $userRaw['cpf']);
+            $newModelUser->setId((int) $userRaw['id']);
 
-            $usersModel[] = $newModelUserList;
+            $usersModel[] = $newModelUser;
         }
 
         return $usersModel;

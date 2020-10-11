@@ -17,4 +17,9 @@ class User extends Crud
     {
         return $this->read();
     }
+
+    public function find(int $id)
+    {
+        # code...
+    }
 }

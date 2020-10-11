@@ -1,4 +1,4 @@
-<?php $this->layout('templates/index', ['title' => 'User Profile']) ?>
+<?php $this->layout('templates/index', ['title' => 'User List']) ?>
 
 <h1 class="mt-5">Usuários cadastrados</h1>
 
@@ -23,6 +23,7 @@
                     <td><?= $user->getEmail() ?></td>
                     <td><?= $user->getCpf() ?></td>
                     <td><?= $user->getPhone() ?></td>
+                    <td><a href="/edit/<?= $user->getId() ?>">Editar</a></td>
                 </tr>
             <?php endforeach ?>
         </tbody>

@@ -9,18 +9,26 @@ class User
 {
     private $service;
 
+    private $templateEngine;
+
     public function __construct() {
         $this->service = new UserService();
+
+        $this->templateEngine = new Engine('src/View', 'phtml');
+
     }
 
     public function list()
     {
-        // Create new Plates instance
-        $templates = new Engine('src/View', 'phtml');
-
         $allUsers = $this->service->fetchAllUsers();
 
-        // Render a template
-        echo $templates->render('user/index', ['usersList' => $allUsers]);
+        echo $this->templateEngine->render('user/index', ['usersList' => $allUsers]);
+    }
+
+    public function edit(int $id)
+    {
+        $user = $this->service->find($id);
+
+        echo $this->templateEngine->render('user/index', ['userModel' => $user]);
     }
 }

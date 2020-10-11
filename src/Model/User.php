@@ -2,7 +2,7 @@
 
 namespace PoC\Model;
 
-class UserList
+class User
 {   
     private $id;
 
@@ -16,7 +16,7 @@ class UserList
 
     public function setId(int $id)
     {
-        $this->id;
+        $this->id = $id;
     }
 
     public function setName(string $name)

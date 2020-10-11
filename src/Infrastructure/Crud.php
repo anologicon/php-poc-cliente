@@ -39,4 +39,24 @@ class Crud
             throw $th;
         }
     }
+
+    public function find(int $id)
+    {
+        $query = $this->newDb();
+
+        try {
+            $stmt = $query->prepare(
+                'SELECT * FROM ' . $this->table . 'WHERE id = :id'
+            );
+
+            $stmt->execute(array('id' => $id));
+
+            $data = $stmt->fetch()[0];
+
+            return $data;
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
 }
