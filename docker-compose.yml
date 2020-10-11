@@ -16,9 +16,12 @@ services:
              - .:/var/www/html
         command: composer install -d /var/www/html
     db:
-        image: mysql:5.7
-        volumes:
-            - /var/lib/mysql
+        image: mysql:8
+        command: --default-authentication-plugin=mysql_native_password
         environment:
-        - MYSQL_ROOT_PASSWORD=phprs
-        - MYSQL_DATABASE=phprs
+            MYSQL_USER: pocuser
+            MYSQL_PASSWORD: pocuser
+            MYSQL_DATABASE: pocuser
+            MYSQL_ROOT_PASSWORD: pocuser
+        ports:
+            - "3306:3306"

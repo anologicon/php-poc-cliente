@@ -16,27 +16,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark Lark</td>
-                <td>lark@mark.com</td>
-                <td>1111111111</td>
-                <td>47 3355-5555</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark Lark</td>
-                <td>lark@mark.com</td>
-                <td>1111111111</td>
-                <td>47 3355-5555</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark Lark</td>
-                <td>lark@mark.com</td>
-                <td>1111111111</td>
-                <td>47 3355-5555</td>
-            </tr>
+            <?php foreach($usersList as $user): ?>
+                <tr>
+                    <th scope="row"><?= $user->getId() ?></th>
+                    <td><?= $user->getName() ?></td>
+                    <td><?= $user->getEmail() ?></td>
+                    <td><?= $user->getCpf() ?></td>
+                    <td><?= $user->getPhone() ?></td>
+                </tr>
+            <?php endforeach ?>
         </tbody>
     </table>
 </div>
