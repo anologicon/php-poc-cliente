@@ -3,8 +3,9 @@
 namespace Poc\Infrastructure;
 
 use PoC\Infrastructure\Database;
+use PoC\Infrastructure\Database\AbstractSqlHelpers;
 
-class Crud
+class Crud extends AbstractSqlHelpers
 {   
     /**
      * Table name to use on crud operations
@@ -78,22 +79,21 @@ class Crud
         }
     }
 
-    public function save($userModel)
+    public function save(array $insert)
     {
         $query = $this->newDb();
 
+        $queryInsert = $this->createInsertQuery(
+            array_keys($insert), $this->table
+        );
+        
         try {
             $stmt = $query->prepare(
-                'INSERT INTO ' . $this->table . ' (nome, telefone, cpf, email)  VALUES (?,?,?,?)'
+                $queryInsert
             );
-
-            $stmt->execute([
-                $userModel->getName(),
-                $userModel->getPhone(),
-                $userModel->getCpf(),
-                $userModel->getEmail(),
-            ]);
-
+            
+            $stmt->execute(array_values($insert));
+            
         } catch (\Throwable $th) {
             throw $th;
         }
