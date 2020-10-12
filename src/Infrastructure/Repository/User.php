@@ -20,6 +20,6 @@ class User extends Crud
 
     public function find(int $id)
     {
-        # code...
+        return $this->findById($id);
     }
 }

@@ -15,7 +15,17 @@ class User
 
     public function find(int $id)
     {
-        return $this->repository->find($id);
+        $userRaw =  $this->repository->find($id);
+
+        $newModelUser = new UserModel();
+
+        $newModelUser->setName($userRaw['nome']);
+        $newModelUser->setEmail($userRaw['email']);
+        $newModelUser->setPhone($userRaw['telefone']);
+        $newModelUser->setCpf((int) $userRaw['cpf']);
+        $newModelUser->setId((int) $userRaw['id']);
+
+        return $newModelUser;
     }
 
     public function fetchAllUsers(): array

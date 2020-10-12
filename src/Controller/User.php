@@ -4,6 +4,7 @@ namespace PoC\Controller;
 
 use League\Plates\Engine;
 use PoC\Domain\Service\User as UserService;
+use PoC\Model\User as ModelUser;
 
 class User
 {
@@ -25,10 +26,15 @@ class User
         echo $this->templateEngine->render('user/index', ['usersList' => $allUsers]);
     }
 
-    public function edit(int $id)
-    {
-        $user = $this->service->find($id);
+    public function handler(?int $id = null)
+    {   
 
-        echo $this->templateEngine->render('user/index', ['userModel' => $user]);
+        $user = new ModelUser;
+
+        if ($id) {
+            $user = $this->service->find($id);
+        }
+
+        echo $this->templateEngine->render('user/handler', ['userModel' => $user]);
     }
 }
