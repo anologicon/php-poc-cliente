@@ -31,7 +31,12 @@ class User extends Crud
 
     public function saveNewUser(ModelUser $userModel)
     {
-        return $this->save($userModel);
+        return $this->save([
+            'nome' => $userModel->getName(),
+            'email' => $userModel->getEmail(),
+            'telefone' => $userModel->getPhone(),
+            'cpf' => $userModel->getCpf()
+        ]);
     }
 
     public function updateUser(ModelUser $userModel)
