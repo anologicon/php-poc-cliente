@@ -2,15 +2,15 @@
 
 <h1 class="mt-5"> <?= $userModel->getId() ? "Edição" : "Cadastro" ?> de usuario</h1>
 
-<form action="/handler" method="<?= $userModel->getId() ? 'put' : 'post' ?>">
+<form action="/user" method="<?= $userModel->getId() ? 'put' : 'post' ?>">
     <input type="hidden" name="id" value="<?= $userModel->getId() ?>">
     <div class="form-group">
         <label for="nome">Nome</label>
-        <input type="text" class="form-control" id="nome" placeholder="Nome" value="<?= $userModel->getName() ?>">
+        <input type="text" name="nome" required class="form-control" id="nome" placeholder="Nome" value="<?= $userModel->getName() ?>">
     </div>
     <div class="form-group">
         <label for="user-email">Email</label>
-        <input type="email" name="email" value="<?= $userModel->getEmail() ?>" class="form-control" id="user-email" placeholder="example@mail.com">
+        <input type="email" required name="email" value="<?= $userModel->getEmail() ?>" class="form-control" id="user-email" placeholder="example@mail.com">
     </div>
     <div class="form-group">
         <label for="user-telefone">Telefone</label>
@@ -18,7 +18,7 @@
     </div>
     <div class="form-group">
         <label for="user-cpf">CPF</label>
-        <input type="text" name="telefone" value="<?= $userModel->getCpf() ?>" class="form-control" id="user-cpf" placeholder="Telefone">
+        <input type="text" required name="cpf" value="<?= $userModel->getCpf() ?>" class="form-control" id="user-cpf" placeholder="Telefone">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

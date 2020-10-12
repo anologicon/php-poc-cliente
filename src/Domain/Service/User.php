@@ -13,19 +13,21 @@ class User
         $this->repository = new UserRepository();
     }
 
+    public function newUser(array $post)
+    {
+        return $this->newModelUser($post);
+    }
+
+    public function saveNewUser(UserModel $userModel)
+    {
+        return $this->repository->saveNewUser($userModel);
+    }
+
     public function find(int $id)
     {
         $userRaw =  $this->repository->find($id);
-
-        $newModelUser = new UserModel();
-
-        $newModelUser->setName($userRaw['nome']);
-        $newModelUser->setEmail($userRaw['email']);
-        $newModelUser->setPhone($userRaw['telefone']);
-        $newModelUser->setCpf((int) $userRaw['cpf']);
-        $newModelUser->setId((int) $userRaw['id']);
-
-        return $newModelUser;
+        
+        return $this->newModelUser($userRaw);
     }
 
     public function fetchAllUsers(): array
@@ -36,17 +38,22 @@ class User
         
         foreach ($allUsersRaw as $userRaw) {
 
-            $newModelUser = new UserModel();
-
-            $newModelUser->setName($userRaw['nome']);
-            $newModelUser->setEmail($userRaw['email']);
-            $newModelUser->setPhone($userRaw['telefone']);
-            $newModelUser->setCpf((int) $userRaw['cpf']);
-            $newModelUser->setId((int) $userRaw['id']);
-
-            $usersModel[] = $newModelUser;
+            $usersModel[] = $this->newModelUser($userRaw);
         }
 
         return $usersModel;
+    }
+
+    private function newModelUser(array $userData): UserModel
+    {
+        $newModelUser = new UserModel();
+
+        $newModelUser->setName($userData['nome']);
+        $newModelUser->setEmail($userData['email']);
+        $newModelUser->setPhone($userData['telefone']);
+        $newModelUser->setCpf((int) $userData['cpf']);
+        $newModelUser->setId((int) $userData['id']);
+
+        return $newModelUser;
     }
 }

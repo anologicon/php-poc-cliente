@@ -37,4 +37,13 @@ class User
 
         echo $this->templateEngine->render('user/handler', ['userModel' => $user]);
     }
+
+    public function newUser(array $post)
+    {
+        $newUser = $this->service->newUser($post);
+
+        $this->service->saveNewUser($newUser);
+
+        echo $this->templateEngine->render('user/handler', ['userModel' => $newUser]);
+    }
 }

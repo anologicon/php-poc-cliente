@@ -40,6 +40,27 @@ class Crud
         }
     }
 
+    public function save($userModel)
+    {
+        $query = $this->newDb();
+
+        try {
+            $stmt = $query->prepare(
+                'INSERT INTO ' . $this->table . ' (nome, telefone, cpf, email)  VALUES (?,?,?,?)'
+            );
+
+            $stmt->execute([
+                $userModel->getName(),
+                $userModel->getPhone(),
+                $userModel->getCpf(),
+                $userModel->getEmail(),
+            ]);
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
     public function findById(int $id)
     {
         $query = $this->newDb();

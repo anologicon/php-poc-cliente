@@ -10,12 +10,11 @@ SimpleRouter::get('/user/{id?}', function ($userId) use ($mainController) {
     $mainController->handler($userId);
 });
 
-SimpleRouter::post('/user', function ($userId) use ($mainController) {
-    
+SimpleRouter::post('/user', function () use ($mainController) {
+   $mainController->newUser($_POST);
 });
 
-SimpleRouter::put('/user', function ($userId) use ($mainController) {
-    
+SimpleRouter::put('/user', function () use ($mainController) {
 });
 
 SimpleRouter::get('/', function () use ($mainController) {
