@@ -28,4 +28,9 @@ class User extends Crud
     {
         return $this->save($userModel);
     }
+
+    public function updateUser(ModelUser $userModel)
+    {
+        return $this->update($userModel);
+    }
 }

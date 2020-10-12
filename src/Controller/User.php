@@ -38,12 +38,16 @@ class User
         echo $this->templateEngine->render('user/handler', ['userModel' => $user]);
     }
 
-    public function newUser(array $post)
+    public function save(array $post)
     {
         $newUser = $this->service->newUser($post);
 
-        $this->service->saveNewUser($newUser);
+        if (!$newUser->getId()) {
+            $this->service->saveNewUser($newUser);
+        } else {
+            $this->service->updateUser($newUser);
+        }
 
-        echo $this->templateEngine->render('user/handler', ['userModel' => $newUser]);
+        header("Location: http://localhost/user/".$newUser->getId());
     }
 }

@@ -2,7 +2,7 @@
 
 <h1 class="mt-5"> <?= $userModel->getId() ? "Edição" : "Cadastro" ?> de usuario</h1>
 
-<form action="/user" method="<?= $userModel->getId() ? 'put' : 'post' ?>">
+<form action="/user" method="post">
     <input type="hidden" name="id" value="<?= $userModel->getId() ?>">
     <div class="form-group">
         <label for="nome">Nome</label>

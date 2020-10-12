@@ -11,10 +11,7 @@ SimpleRouter::get('/user/{id?}', function ($userId) use ($mainController) {
 });
 
 SimpleRouter::post('/user', function () use ($mainController) {
-   $mainController->newUser($_POST);
-});
-
-SimpleRouter::put('/user', function () use ($mainController) {
+   $mainController->save($_POST);
 });
 
 SimpleRouter::get('/', function () use ($mainController) {

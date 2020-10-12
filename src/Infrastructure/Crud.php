@@ -40,6 +40,27 @@ class Crud
         }
     }
 
+    public function update($userModel)
+    {
+        $query = $this->newDb();
+
+        try {
+            $stmt = $query->prepare(
+                'UPDATE ' . $this->table . ' SET nome=?, telefone=?, cpf=?, email=? WHERE id = ?'
+            );
+
+            $stmt->execute([
+                $userModel->getName(),
+                $userModel->getPhone(),
+                $userModel->getCpf(),
+                $userModel->getEmail(),
+                $userModel->getId(),
+            ]);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
     public function save($userModel)
     {
         $query = $this->newDb();

@@ -23,6 +23,11 @@ class User
         return $this->repository->saveNewUser($userModel);
     }
 
+    public function updateUser(UserModel $userModel)
+    {
+        return $this->repository->updateUser($userModel);
+    }
+
     public function find(int $id)
     {
         $userRaw =  $this->repository->find($id);
