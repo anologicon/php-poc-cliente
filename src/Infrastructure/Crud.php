@@ -61,6 +61,23 @@ class Crud
         }
     }
 
+    public function remove(int $id)
+    {
+        $query = $this->newDb();
+
+        try {
+            $stmt = $query->prepare(
+                'DELETE FROM ' . $this->table . ' WHERE id = ?'
+            );
+
+            $stmt->execute([
+                $id,
+            ]);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
     public function save($userModel)
     {
         $query = $this->newDb();

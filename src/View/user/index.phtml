@@ -16,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach($usersList as $user): ?>
+            <?php foreach ($usersList as $user) : ?>
                 <tr>
                     <th scope="row"><?= $user->getId() ?></th>
                     <td><?= $user->getName() ?></td>
@@ -24,6 +24,7 @@
                     <td><?= $user->getCpf() ?></td>
                     <td><?= $user->getPhone() ?></td>
                     <td><a href="/user/<?= $user->getId() ?>">Editar</a></td>
+                    <td><a href="/user/delete/<?= $user->getId() ?>">Remover</a></td>
                 </tr>
             <?php endforeach ?>
         </tbody>

@@ -50,4 +50,11 @@ class User
 
         header("Location: http://localhost/user/".$newUser->getId());
     }
+
+    public function delete(int $id)
+    {
+        $this->service->removeUser($id);
+
+        header("Location: http://localhost");
+    }
 }

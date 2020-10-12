@@ -24,6 +24,11 @@ class User extends Crud
         return $this->findById($id);
     }
 
+    public function removeUser(int $id)
+    {
+        $this->remove($id);
+    }
+
     public function saveNewUser(ModelUser $userModel)
     {
         return $this->save($userModel);

@@ -18,6 +18,11 @@ class User
         return $this->newModelUser($post);
     }
 
+    public function removeUser(int $id)
+    {   
+        $this->repository->removeUser($id);
+    }
+
     public function saveNewUser(UserModel $userModel)
     {
         return $this->repository->saveNewUser($userModel);

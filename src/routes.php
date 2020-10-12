@@ -14,6 +14,11 @@ SimpleRouter::post('/user', function () use ($mainController) {
    $mainController->save($_POST);
 });
 
+SimpleRouter::get('/user/delete/{id}', function ($userId) use ($mainController) {
+    $mainController->delete($userId);
+});
+
+
 SimpleRouter::get('/', function () use ($mainController) {
     $mainController->list();
 });
