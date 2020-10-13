@@ -69,7 +69,7 @@ create table log
 
 ## Arquitetura
 
-O projeto é um MVC simples, com uma arquitetura em camadas com: Services, Domains, Entitys e Repositorys.
+O projeto é um MVC simples, com uma arquitetura em camadas com: Services, Domains, Entities e Repositories.
 
 ---> User Request
 
@@ -87,7 +87,7 @@ O projeto é um MVC simples, com uma arquitetura em camadas com: Services, Domai
 
 ------------> Repository
 
---------------> Entitys
+--------------> Entities
 
 Basicamente estamos tentando implementar classes que sigam o principio de responsabilidade única, e separando por camadas as regras de negócios (*Que é a criação do usuário neste caso*), a camada que se conecta ao banco de dados, e a camada que lida com a requisição do client.
 
