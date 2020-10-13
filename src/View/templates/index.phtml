@@ -3,10 +3,12 @@
 <?= $this->section('head', $this->fetch('templates/header', ['title' => $title])) ?>
 
 <body class="d-flex flex-column">
+    <div class="container mt-5">
+        <a class="btn btn-primary" href="/">Home</a>
+    </div>
     <main role="main" class="container">
         <?= $this->section('content') ?>
     </main>
-
     <?= $this->section('footer', $this->fetch('templates/footer')) ?>
 </body>
 
