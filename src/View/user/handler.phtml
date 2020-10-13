@@ -1,4 +1,4 @@
-<?php $this->layout('templates/index', ['title' => 'User Edite']) ?>
+<?php $this->layout('templates/index', ['title' => $userModel->getId() ? "Edição" : "Cadastro"]) ?>
 
 <h1 class="mt-5"> <?= $userModel->getId() ? "Edição" : "Cadastro" ?> de usuario</h1>
 
