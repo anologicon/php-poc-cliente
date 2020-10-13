@@ -3,9 +3,9 @@
 namespace PoC\Controller;
 
 use League\Plates\Engine;
+use PoC\Model\User as ModelUser;
 use PoC\Domain\Service\Log as LogService;
 use PoC\Domain\Service\User as UserService;
-use PoC\Model\User as ModelUser;
 
 class User
 {
@@ -55,7 +55,7 @@ class User
 
         }
 
-        header("Location: http://localhost/user/".$newUser->getId());
+        header("Location: http://localhost");
     }
 
     public function delete(int $id)
